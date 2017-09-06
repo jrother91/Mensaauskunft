@@ -3,9 +3,6 @@
 import requests, bs4, codecs, urllib2
 
 
-
-
-
 def mensa_download():
     
     urls_mensa = []
@@ -55,8 +52,17 @@ def mensa_download():
     #Dictionary of Dictionaries (key: Datum -> key: Tagesmenü -> value: Gericht Tagesmenü | key: Datum -> key: vegMenü -> value: Gericht vegetarisches Menü)
     for i in range(5):
         food[dates[i]] = {}
-        food[dates[i]]['Tagesmenü'] = menu[i]
-        food[dates[i]]['vegMenü'] = menuveg[i]
+        m = str(menu[i])
+        mveg = str(menuveg[i])
+        for ch in ['<p>','</p>', '<sup>', '</sup>']:
+            if ch == '<sup>':
+                m = m.replace(ch, ' enthält ')
+                mveg = mveg.replace(ch, ' enthält ')
+            else:
+                m = m.replace(ch, '')
+                mveg = mveg.replace(ch, '')
+        food[dates[i]][u'Tagesmenü'] = m
+        food[dates[i]][u'vegMenü'] = mveg
         
     return(food)
     
