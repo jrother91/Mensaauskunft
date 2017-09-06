@@ -26,6 +26,7 @@ def new_game():
 
     return question(welcome_msg +' '+ query)
 
+
 @ask.intent("Done")
 
 def say_no():
@@ -33,7 +34,17 @@ def say_no():
     goodbye = render_template('bye')
 
     return statement(goodbye)
+
+
+@ask.intent("AskPrice")
+
+def state_price():
 	
+    price = render_template('price')
+
+    return question(price +' '+ query)
+
+    
 if __name__ == '__main__':
 
     app.run(debug=True)
