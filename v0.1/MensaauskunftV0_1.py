@@ -22,7 +22,17 @@ def new_game():
 
     welcome_msg = render_template('welcome')
 
-    return statement(welcome_msg)
+    query = render_template('query')
+
+    return question(welcome_msg +' '+ query)
+
+@ask.intent("Done")
+
+def say_no():
+
+    goodbye = render_template('bye')
+
+    return statement(goodbye)
 	
 if __name__ == '__main__':
 
