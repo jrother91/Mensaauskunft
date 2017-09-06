@@ -42,6 +42,8 @@ def state_price():
 	
     price = render_template('price')
 
+    query = render_template('query')
+
     return question(price +' '+ query)
 
     
