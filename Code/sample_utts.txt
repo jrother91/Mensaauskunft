@@ -1,0 +1,10 @@
+NoQuestions Nein
+NoQuestions Danke
+AskSideDishes Welche Beilagen gibt es
+AskSideDishes Was gibt es dazu
+AskPrice Was kostet es
+AskPrice Wieviel kostet das Menü
+AskBusinessHours Wann hat sie auf
+AskBusinessHours Wann macht die Mensa zu
+AskBusinessHours Was sind die Öffnungszeiten 
+ChangeDate Und am {Date}
