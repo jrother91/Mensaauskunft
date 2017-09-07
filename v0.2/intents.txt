@@ -5,6 +5,12 @@
     },
     {
       "intent": "AskMainMenu"
+	"slots": [
+        {
+          "name": "Date",
+	  "type": "AMAZON.DATE"
+	}
+     ]
     },
     {
       "intent": "AskSideDishes"
