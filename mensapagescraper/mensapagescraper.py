@@ -4,10 +4,7 @@ import requests, bs4, codecs, urllib2
 
 
 def mensa_download():
-    
-    urls_mensa = []
-    index = 1
-    name = ''
+
     response = urllib2.urlopen('http://www.studierendenwerk-bielefeld.de/essen-trinken/essen-und-trinken-in-mensen/bielefeld/mensa-gebaeude-x.html')
     html = response.read()
 
@@ -61,11 +58,19 @@ def mensa_download():
             else:
                 m = m.replace(ch, '')
                 mveg = mveg.replace(ch, '')
-        food[dates[i]][u'Tagesmenü'] = m
-        food[dates[i]][u'vegMenü'] = mveg
+        food[dates[i]]['Tagesmenü'] = m
+        food[dates[i]]['vegMenü'] = mveg
         
     return(food)
+
+##Gibt das Tagesmenü und vegetarische Menü von einem Datum aus.    
+def getMenu(datum, food):
+    return [food[datum]['Tagesmenü'], food[datum]['vegMenü']]
+
+def mainV2(date):
+    #print(mensa_download())
+    mensa = mensa_download()
+    food_today = getMenu(date, mensa)
+    return food_today
     
-
-
-print(mensa_download())
+print(mainV2('2017-09-07'))
