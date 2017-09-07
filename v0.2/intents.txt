@@ -1,7 +1,10 @@
 {
   "intents": [
     {
-      "intent": "NoQuestions",
+      "intent": "Done"
+    },
+    {
+      "intent": "AskMainMenu"
     },
     {
       "intent": "AskSideDishes"
@@ -23,6 +26,12 @@
     },
     {
       "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "YesIntent"
+    },
+    {
+      "intent": "NoIntent"
     }
   ]
 }
