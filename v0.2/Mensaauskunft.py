@@ -4,7 +4,7 @@ import logging
 
 import sys
 sys.path.append('../mensapagescraper')
-import fake_info 
+import mensapagescraper 
 
 import datetime
 
@@ -51,7 +51,7 @@ def main_menu(ThisDate):
     
     session.attributes["CurrentDate"] = ThisDate
     
-    main_menu = render_template('main_menu', main_menu = fake_info(ThisDate)[main_menu])
+    main_menu = render_template('main_menu', main_menu = mensapagescraper(ThisDate)[main_menu])
 
     if "greet" not in session.attributes.keys():
         welcome_msg = render_template('welcome')
