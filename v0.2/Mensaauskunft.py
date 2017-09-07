@@ -51,7 +51,7 @@ def main_menu(ThisDate):
     
     session.attributes["CurrentDate"] = ThisDate
     
-    main_menu = render_template('main_menu', main_menu = u"hallo") #+mensapagescraper.getMensaInfo()[ThisDate]["veg_menu"])
+    main_menu = render_template('main_menu', main_menu = mensapagescraper.getMensaInfo()[ThisDate]["main_menu"])
 
     
     

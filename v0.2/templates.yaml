@@ -1,5 +1,5 @@
 ﻿welcome: Willkommen bei der Mensaauskunft!
-main_menu: Heute gibt es {main_menu} im Tagesmenü.
+main_menu: Es gibt {{main_menu}} im Tagesmenü.
 init_query: Was kann ich für Sie tun?
 bye: Guten Appetit!
 price: Das Tagesmenü kostet 2,60 € für Studierende, 4,20 € für Angestellte und 5 € für externe Gäste.
