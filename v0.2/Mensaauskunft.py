@@ -2,9 +2,13 @@
 
 import logging
 
-import ../mensascraper/fake_info
+import sys
+sys.path.append('../mensapagescraper')
+import fake_info 
 
 import datetime
+
+from datetime import date
 
 from random import randint
 
@@ -36,20 +40,18 @@ def welcome():
     return statement(welcome_msg+" "+init_query)
 
 
-@ask.intent("AskMainMenu")
+@ask.intent("AskMainMenu", default={"ThisDate" : date.today()}, convert={"ThisDate":datetime.date})
 
-def main_menu():
+def main_menu(ThisDate):
     """
     Greets the user if they haven't been greetet yet.
     Takes a given date (or assumes today's date) and gives back the main menu.
     """
-    
-    #if session.attributes["Date"] = today()
-    
-
 
     
-    main_menu = render_template('main_menu', main_menu = fake_info(date)[main_menu])
+    session.attributes["CurrentDate"] = ThisDate
+    
+    main_menu = render_template('main_menu', main_menu = fake_info(ThisDate)[main_menu])
 
     if "greet" not in session.attributes.keys():
         welcome_msg = render_template('welcome')
@@ -83,4 +85,4 @@ def state_price():
     
 if __name__ == '__main__':
 
-app.run(debug=True)
+    app.run(debug=True)
