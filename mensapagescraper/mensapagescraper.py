@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 
-import requests, bs4, codecs
+import requests, bs4, codecs, re
 
 
-def mensa_download():
+def mensa_download(url):
     """
     Grabs the html code of this week's mensa plan
     returns it as a bs4 object
     """
-    response = requests.get('http://www.studierendenwerk-bielefeld.de/essen-trinken/essen-und-trinken-in-mensen/bielefeld/mensa-gebaeude-x.html')
+    response = requests.get(url)
     html = response.text
 
-    htmlSoup = bs4.BeautifulSoup(html)
+    htmlSoup = bs4.BeautifulSoup(html, 'lxml')
 
     return htmlSoup
 
@@ -33,14 +33,8 @@ def getNextWeek(divElem):
     #time = divElem.select('p')[1]
 
     #Link für die nächste Woche
-    nextWeek = "http://www.studierendenwerk-bielefeld.de" + divElem.select('a')[93].get("href")
-    
-    response = requests.get(nextWeek)
-    html = response.text
+    return ("http://www.studierendenwerk-bielefeld.de" + divElem.select('a')[93].get("href"))
 
-    htmlSoup = bs4.BeautifulSoup(html)
-
-    return htmlSoup
 
 def extractInfo(divElem):
     """
@@ -95,20 +89,23 @@ def extractInfo(divElem):
 
     return(food)
 
-
-def main():
+def getMensaInfo():
     """
     grabs the mensa plans for the current and next week from the website
     returns a dictionary that contains the main menus for each day that has them
     (date (main_menu: name, veg_menu:name))
     """
-    mensa = mensa_download()
+    mensa = mensa_download('http://www.studierendenwerk-bielefeld.de/essen-trinken/essen-und-trinken-in-mensen/bielefeld/mensa-gebaeude-x.html')
     div_this_week = getDiv(mensa)
     food_this_week = extractInfo(div_this_week)
-    mensa_next = getNextWeek(mensa)
+    mensa_next_url = getNextWeek(mensa)
+    mensa_next = mensa_download(mensa_next_url)
     div_next_week = getDiv(mensa_next)
     food_next_week = extractInfo(div_next_week)
     food = dict(food_this_week.items() + food_next_week.items())
     return food
+    
 
-print(main())
+if __name__ == '__main__':
+    
+    print(getMensaInfo())
