@@ -73,15 +73,15 @@ def extractInfo(divElem):
         food[dates[i]] = {}
         m = str(menu[i])
         mveg = str(menuveg[i])
-        for ch in ['<p>','</p>', '<sup>', '</sup>']:
-            if ch == '<sup>':
-                m = m.replace(ch, ' enthält ')
-                mveg = mveg.replace(ch, ' enthält ')
-            else:
-                m = m.replace(ch, '')
-                mveg = mveg.replace(ch, '')
-        food[dates[i]]['main_menu'] = m
-        food[dates[i]]['veg_menu'] = mveg
+        m = bs4.BeautifulSoup(m, 'lxml')
+        mveg = bs4.BeautifulSoup(mveg, 'lxml')
+        for tag in m.find_all('sup'):
+            tag.decompose()
+        for tag in mveg.find_all('sup'):
+            tag.decompose()
+        food[dates[i]]['main_menu'] = m.find('p').getText()
+        food[dates[i]]['veg_menu'] = mveg.find('p').getText()
+        
 
     #f = open(dates[0] + '.txt', 'w')
     #f.write('test')
@@ -109,3 +109,4 @@ def getMensaInfo():
 if __name__ == '__main__':
     
     print(getMensaInfo())
+    
