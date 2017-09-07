@@ -33,8 +33,8 @@ def getNextWeek(divElem):
     #time = divElem.select('p')[1]
 
     #Link für die nächste Woche
-    nextWeek = "http://www.studierendenwerk-bielefeld.de" + divElem.select('a')[19].get("href")
-
+    nextWeek = "http://www.studierendenwerk-bielefeld.de" + divElem.select('a')[93].get("href")
+    
     response = requests.get(nextWeek)
     html = response.text
 
@@ -51,7 +51,7 @@ def extractInfo(divElem):
     """
     #Wochentage (diese Woche)
     days = divElem.select('h2')[1:6]
-
+    
     #Liste mit den Daten der aktuellen Woche (amerikanische Schreibweise)
     dates = []
     for i in days:
@@ -107,8 +107,8 @@ def main():
     food_this_week = extractInfo(div_this_week)
     mensa_next = getNextWeek(mensa)
     div_next_week = getDiv(mensa_next)
-    #food_next_week = extractInfo(div_next_week)
-    #food = dict(food_this_week.items() + food_next_week.items())
-    return food_this_week
+    food_next_week = extractInfo(div_next_week)
+    food = dict(food_this_week.items() + food_next_week.items())
+    return food
 
-#print(main())
+print(main())
