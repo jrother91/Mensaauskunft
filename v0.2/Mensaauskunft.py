@@ -40,7 +40,7 @@ def welcome():
     return statement(welcome_msg+" "+init_query)
 
 
-@ask.intent("AskMainMenu", default={"ThisDate" : date.today()}, convert={"ThisDate":datetime.date})
+@ask.intent("AskMainMenu", convert={"ThisDate":datetime.date}, default={"ThisDate" : date.today()})
 
 def main_menu(ThisDate):
     """
@@ -51,8 +51,10 @@ def main_menu(ThisDate):
     
     session.attributes["CurrentDate"] = ThisDate
     
-    main_menu = render_template('main_menu', main_menu = mensapagescraper(ThisDate)[main_menu])
+    main_menu = render_template('main_menu', main_menu = u"hallo") #+mensapagescraper.getMensaInfo()[ThisDate]["veg_menu"])
 
+    
+    
     if "greet" not in session.attributes.keys():
         welcome_msg = render_template('welcome')
         session.attributes["greet"] = True
