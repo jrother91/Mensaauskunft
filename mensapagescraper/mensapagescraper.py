@@ -72,5 +72,3 @@ def mainV2(date):
     mensa = mensa_download()
     food_today = getMenu(date, mensa)
     return food_today
-    
-print(mainV2('2017-09-07'))
