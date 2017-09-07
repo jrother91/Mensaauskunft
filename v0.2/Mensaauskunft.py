@@ -2,6 +2,10 @@
 
 import logging
 
+import ../mensascraper/fake_info
+
+import datetime
+
 from random import randint
 
 from flask import Flask, render_template
@@ -19,20 +23,33 @@ logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 
 @ask.launch
 
-def new_game():
+def welcome():
+    """
+    welcomes the user and asks for further instructions
+    """
 
     welcome_msg = render_template('welcome')
     session.attributes["greet"] = True
 
-    #init_query = render_template('init_query')
+    init_query = render_template('init_query')
 
-    return statement(welcome_msg)
+    return statement(welcome_msg+" "+init_query)
 
 
 @ask.intent("AskMainMenu")
 
 def main_menu():
-    main_menu = render_template('main_menu')
+    """
+    Greets the user if they haven't been greetet yet.
+    Takes a given date (or assumes today's date) and gives back the main menu.
+    """
+    
+    #if session.attributes["Date"] = today()
+    
+
+
+    
+    main_menu = render_template('main_menu', main_menu = fake_info(date)[main_menu])
 
     if "greet" not in session.attributes.keys():
         welcome_msg = render_template('welcome')
