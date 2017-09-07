@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-import requests, bs4, codecs, urllib2
+import requests, bs4, codecs
 
 
 def mensa_download():
 
-    response = urllib2.urlopen('http://www.studierendenwerk-bielefeld.de/essen-trinken/essen-und-trinken-in-mensen/bielefeld/mensa-gebaeude-x.html')
-    html = response.read()
+    response = requests.get('http://www.studierendenwerk-bielefeld.de/essen-trinken/essen-und-trinken-in-mensen/bielefeld/mensa-gebaeude-x.html')
+    html = response.text
 
     htmlSoup = bs4.BeautifulSoup(html)
 
@@ -60,7 +60,11 @@ def mensa_download():
                 mveg = mveg.replace(ch, '')
         food[dates[i]]['Tagesmenü'] = m
         food[dates[i]]['vegMenü'] = mveg
-        
+
+    f = open(dates[0] + '.txt', 'w')
+    f.write('test')
+    f.close()
+
     return(food)
 
 ##Gibt das Tagesmenü und vegetarische Menü von einem Datum aus.    
@@ -72,3 +76,5 @@ def mainV2(date):
     mensa = mensa_download()
     food_today = getMenu(date, mensa)
     return food_today
+
+mainV2('2017-09-07')
