@@ -42,7 +42,7 @@ def getNextWeek(divElem):
 
     return htmlSoup
 
-def extrractInfo(divElem):
+def extractInfo(divElem):
     """
     takes the main div of a mensa page
     extracts all needed info: dates that have food, names of the food
@@ -86,7 +86,7 @@ def extrractInfo(divElem):
             else:
                 m = m.replace(ch, '')
                 mveg = mveg.replace(ch, '')
-        food[dates[i]]['main-Menu'] = m
+        food[dates[i]]['main_menu'] = m
         food[dates[i]]['veg_menu'] = mveg
 
     #f = open(dates[0] + '.txt', 'w')
@@ -107,8 +107,8 @@ def main():
     food_this_week = extractInfo(div_this_week)
     mensa_next = getNextWeek(mensa)
     div_next_week = getDiv(mensa_next)
-    food_next_week = extractInfo(div_next_week)
-        
-    return food_today
+    #food_next_week = extractInfo(div_next_week)
+    #food = dict(food_this_week.items() + food_next_week.items())
+    return food_this_week
 
-mainV2('2017-09-07')
+#print(main())
