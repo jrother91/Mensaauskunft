@@ -9,17 +9,12 @@
 	  {
 	  "name": "ThisDate",
 	  "type": "AMAZON.DATE"
+	  },
+     	  {
+	  "name": "Menu",
+	  "type": "MENUS"
 	  }
-     ]
-    },
-	{
-      "intent": "AskVegMenu",
-	  "slots": [
-	  {
-	  "name": "ThisDate",
-	  "type": "AMAZON.DATE"
-	  }
-     ]
+      ]
     },
     {
       "intent": "AskSideDishes"
