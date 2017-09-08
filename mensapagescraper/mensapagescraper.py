@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import requests, bs4, codecs, re
+import requests, bs4, codecs, json
+
+import os
+import glob
+
+from datetime import datetime, timedelta
 
 
 def mensa_download(url):
@@ -96,11 +101,52 @@ def extractInfo(divElem):
         beilage_veg = bveg.find('p').getText().replace(' oder', ',').split(',')
         food[dates[i]]['side_dishes'] = list(set(beilage + beilage_veg))        
 
-    #f = open(dates[0] + '.txt', 'w')
-    #f.write('test')
-    #f.close()
-
     return(food)
+
+def saveToJson(date, food):
+    """
+    saves the food dictionary as a json file
+    """
+    with open(date + '.json', 'w') as fp:
+        json.dump(food, fp, sort_keys = True)
+
+def loadFromJson(date):
+    """
+    loads the food dictionary from a json file
+    """
+    with open(date + '.json', 'r') as fp:
+        food = json.load(fp)
+
+    return food
+
+def findTime(food):
+    """
+    finds the earliest day in the food dictionary
+    """
+    keys = sorted(food.keys())
+    return keys[0]
+
+def loadNewestJson():
+    """
+    finds the name of the newest json file
+    """
+    try:
+        newest = max(glob.iglob('*.[Jj][Ss][Oo][Nn]'), key=os.path.getctime)
+        return newest
+    except:
+        pass
+
+def nDaysAgo():
+    """
+    finds the date of the last monday
+    """
+    n = datetime.now().weekday()
+
+    date_N_days_ago = datetime.now() - timedelta(days=n)
+
+    date_N_days_ago = str(date_N_days_ago).split()[0]
+
+    return date_N_days_ago
 
 def getMensaInfo():
     """
@@ -108,15 +154,24 @@ def getMensaInfo():
     returns a dictionary that contains the main menus for each day that has them
     (date (main_menu: name, veg_menu:name))
     """
-    mensa = mensa_download('http://www.studierendenwerk-bielefeld.de/essen-trinken/essen-und-trinken-in-mensen/bielefeld/mensa-gebaeude-x.html')
-    div_this_week = getDiv(mensa)
-    food_this_week = extractInfo(div_this_week)
-    mensa_next_url = getNextWeek(mensa)
-    mensa_next = mensa_download(mensa_next_url)
-    div_next_week = getDiv(mensa_next)
-    food_next_week = extractInfo(div_next_week)
-    food = dict(food_this_week.items() + food_next_week.items())
-    return food
+    date = nDaysAgo()
+    if(date + '.json' == loadNewestJson()):
+        food = loadFromJson(date)
+
+        return food
+    else:
+        mensa = mensa_download('http://www.studierendenwerk-bielefeld.de/essen-trinken/essen-und-trinken-in-mensen/bielefeld/mensa-gebaeude-x.html')
+        div_this_week = getDiv(mensa)
+        food_this_week = extractInfo(div_this_week)
+        mensa_next_url = getNextWeek(mensa)
+        mensa_next = mensa_download(mensa_next_url)
+        div_next_week = getDiv(mensa_next)
+        food_next_week = extractInfo(div_next_week)
+        food = dict(food_this_week.items() + food_next_week.items())
+        date = findTime(food)
+        saveToJson(date, food)
+
+        return food
     
 
 if __name__ == '__main__':
