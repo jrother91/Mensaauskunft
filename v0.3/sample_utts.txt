@@ -1,10 +1,28 @@
-NoQuestions Nein
-NoQuestions Danke
+﻿AskMainMenu Was gibt es {ThisDate} zu essen
+AskMainMenu Was gibt es in der mensa {ThisDate} zu essen
+AskMainMenu Was gibt es {ThisDate} zu essen in der mensa
+AskMainMenu was ist das tagesmenü {ThisDate}
+AskMainMenu was gibt es zu essen
+AskMainMenu was ist das tagesmenü
+AskMainMenu was gibt es in der mensa
+
+AskVegMenu Was gibt es {ThisDate} vegetarisch zu essen
+AskVegMenu Was gibt es in der mensa {ThisDate} zu essen ohne fleisch
+AskVegMenu was ist das vegetarische menü {ThisDate}
+AskVegMenu was gibt es zu essen ohne fleisch
+AskVegMenu was gibt es ohne fleisch
+AskVegMenu gibt es etwas ohne fleisch
+AskVegMenu was ist das vegetarische menü
+AskVegMenu was gibt vegetarisches es in der mensa
+
 AskSideDishes Welche Beilagen gibt es
 AskSideDishes Was gibt es dazu
+
 AskPrice Was kostet es
-AskPrice Wieviel kostet das Menü
+AskPrice Wieviel kostet das
+
 AskBusinessHours Wann hat sie auf
 AskBusinessHours Wann macht die Mensa zu
 AskBusinessHours Was sind die Öffnungszeiten 
+
 ChangeDate Und am {Date}

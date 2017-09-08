@@ -40,7 +40,7 @@ def welcome():
     return statement(welcome_msg+" "+init_query)
 
 
-@ask.intent("AskMainMenu", convert={"ThisDate":datetime.date}, default={"ThisDate" : date.today()})
+@ask.intent("AskMainMenu", default={"ThisDate" : date.today().isoformat()}, convert={"ThisDate":datetime.date})
 
 def main_menu(ThisDate):
     """
@@ -48,7 +48,7 @@ def main_menu(ThisDate):
     Takes a given date (or assumes today's date) and gives back the main menu.
     """
 
-    
+	
     session.attributes["CurrentDate"] = ThisDate
     
     main_menu = render_template('main_menu', main_menu = mensapagescraper.getMensaInfo()[ThisDate]["main_menu"])
@@ -63,6 +63,30 @@ def main_menu(ThisDate):
         main_menu_msg = main_menu
     
     return statement(main_menu_msg)
+
+
+@ask.intent("AskVegMenu", default={"ThisDate" : date.today().isoformat()}, convert={"ThisDate":datetime.date})
+
+def veg_menu(ThisDate):
+    """
+    Greets the user if they haven't been greetet yet.
+    Takes a given date (or assumes today's date) and gives back the main menu.
+    """
+	
+
+    session.attributes["CurrentDate"] = ThisDate
+    
+    veg_menu = render_template('veg_menu', veg_menu = mensapagescraper.getMensaInfo()[ThisDate]["veg_menu"])
+
+    
+    if "greet" not in session.attributes.keys():
+        welcome_msg = render_template('welcome')
+        session.attributes["greet"] = True
+        veg_menu_msg = welcome_msg + " " + veg_menu
+    else:
+        veg_menu_msg = veg_menu
+    
+    return statement(veg_menu_msg)
 
 
 @ask.intent("Done")
