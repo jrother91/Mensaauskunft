@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import requests, bs4, codecs, re
+import requests, bs4, codecs, json
 
 
 def mensa_download(url):
@@ -96,11 +96,22 @@ def extractInfo(divElem):
         beilage_veg = bveg.find('p').getText().replace(' oder', ',').split(',')
         food[dates[i]]['side_dishes'] = list(set(beilage + beilage_veg))        
 
-    #f = open(dates[0] + '.txt', 'w')
-    #f.write('test')
-    #f.close()
-
     return(food)
+
+def saveToJson(date, food):
+
+    with open(date + '.json', 'w') as fp:
+        json.dump(food, fp, sort_keys = True)
+
+def loadFromJson(date):
+    with open(date + '.json', 'r') as fp:
+        food = json.load(fp)
+
+    return food
+
+def findTime(food):
+    keys = sorted(food.keys())
+    return keys[0]
 
 def getMensaInfo():
     """
@@ -116,6 +127,11 @@ def getMensaInfo():
     div_next_week = getDiv(mensa_next)
     food_next_week = extractInfo(div_next_week)
     food = dict(food_this_week.items() + food_next_week.items())
+    date = findTime(food)
+    saveToJson(date, food)
+    #test = loadFromJson(date)
+    #print(test)
+    #print('\n\n\n')
     return food
     
 
