@@ -71,11 +71,11 @@ def veg_menu(ThisDate):
     Takes a given date (or assumes today's date) and gives back the vegetarian menu.
     """
 	
-    print "the date is" + ThisDate
+    #print "the date is" + ThisDate
     
     veg_menu = render_template('veg_menu', veg_menu = mensapagescraper.getMensaInfo()[ThisDate]['veg_menu'])
 	
-    print "our info is "+mensapagescraper.getMensaInfo()[ThisDate]
+    #print "our info is "+mensapagescraper.getMensaInfo()[ThisDate]
     
     if "greet" not in session.attributes.keys():
         welcome_msg = render_template('welcome')
