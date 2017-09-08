@@ -40,7 +40,7 @@ def welcome():
     return question(welcome_msg+" "+init_query)
 
 
-@ask.intent("AskMainMenu", default={"ThisDate" : date.today().isoformat(), "Menu": "main_menu"}, convert={"ThisDate":datetime.date, "Menu": str})
+@ask.intent("AskMenu", default={"ThisDate" : date.today().isoformat(), "Menu": "main_menu"}, convert={"ThisDate":datetime.date, "Menu": str})
 
 def main_menu(ThisDate, Menu):
     """
@@ -48,12 +48,12 @@ def main_menu(ThisDate, Menu):
     Takes a given date (or assumes today's date) and gives back the main menu.
     """
     menu_name = "main_menu"
-    if(Menu == "tagesmenü"):
+    if(Menu in ["Tagesmenü", "Hauptgericht", "Fleisch", "fleischig", "mit Fleisch"]):
     
         menu_name = 'main_menu'
-    elif(Menu == "vegetarisch"):
+    elif(Menu in ["vegetarisch", "ohne Fleisch"]):
         menu_name = 'veg_menu'
-    elif(Menu == "vital"):
+    elif(Menu in ["vital", "leichtes"]):
         menu_name = 'mensa_vit'
 
     
