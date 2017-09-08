@@ -1,10 +1,14 @@
-﻿AskMainMenu Was gibt es {ThisDate} zu essen
+﻿AskMainMenu was gibt es {ThisDate} als hauptgericht
+AskMainMenu was ist {ThisDate} das hauptgericht
+AskMainMenu Was gibt es {ThisDate} zu essen
 AskMainMenu Was gibt es in der mensa {ThisDate} zu essen
 AskMainMenu Was gibt es {ThisDate} zu essen in der mensa
 AskMainMenu was ist das tagesmenü {ThisDate}
 AskMainMenu was gibt es zu essen
 AskMainMenu was ist das tagesmenü
 AskMainMenu was gibt es in der mensa
+AskMainMenu was gibt es als hauptgericht
+AskMainMenu was ist das hauptgericht
 
 AskVegMenu Was gibt es {ThisDate} vegetarisch zu essen
 AskVegMenu Was gibt es in der mensa {ThisDate} zu essen ohne fleisch
@@ -20,7 +24,7 @@ AskSideDishes Was gibt es dazu
 
 AskPrice Was kostet es
 AskPrice Wieviel kostet das
-
+git 
 AskBusinessHours Wann hat sie auf
 AskBusinessHours Wann macht die Mensa zu
 AskBusinessHours Was sind die Öffnungszeiten 
