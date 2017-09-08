@@ -1,0 +1,43 @@
+{
+  "intents": [
+    {
+      "intent": "Done"
+    },
+    {
+      "intent": "AskMainMenu"
+	"slots": [
+        {
+          "name": "Date",
+	  "type": "AMAZON.DATE"
+	}
+     ]
+    },
+    {
+      "intent": "AskSideDishes"
+    },
+	{
+      "intent": "AskPrice"
+    },
+	{
+      "intent": "AskBusinessHours"
+    },
+	{
+      "intent": "ChangeDate"
+	  "slots": [
+        {
+          "name": "Date",
+          "type": "AMAZON.DATE"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "YesIntent"
+    },
+    {
+      "intent": "NoIntent"
+    }
+  ]
+}
