@@ -3,6 +3,7 @@ AskMenu was gibt es in der mensa
 AskMenu ich hab hunger
 AskMenu ich habe hunger
 AskMenu was gibt es
+
 AskMenu was gibt es {ThisDate} zu essen
 AskMenu was gibt es zu essen {ThisDate}
 AskMenu {ThisDate} was gibt es zu essen
@@ -10,14 +11,18 @@ AskMenu was gibt es {ThisDate} in der mensa
 AskMenu was gibt es in der mensa {ThisDate}
 AskMenu {ThisDate} was gibt es in der mensa
 AskMenu was gibt es {ThisDate}
+
 AskMenu sag mir das {Menu}
 AskMenu was gibt es {Menu} zu essen
+AskMenu was gibt es in {Menu} zu essen
+AskMenu was gibt es als {Menu} zu essen
 AskMenu was gibt es zu essen {Menu}
 AskMenu {Menu} was gibt es zu essen
 AskMenu was gibt es in der mensa {Menu}
 AskMenu ich hab hunger nach {Menu}
 AskMenu ich habe hunger nach {Menu}
 AskMenu was gibt es {Menu}
+
 AskMenu was gibt es {Menu} {ThisDate} zu essen
 AskMenu was gibt es {Menu} zu essen {ThisDate}
 AskMenu {ThisDate} was gibt es {Menu} zu essen
