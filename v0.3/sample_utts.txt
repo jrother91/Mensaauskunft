@@ -1,32 +1,48 @@
-AskMainMenu was gibt es {ThisDate} als hauptgericht
-AskMainMenu was ist {ThisDate} das hauptgericht
-AskMainMenu Was gibt es {ThisDate} zu essen
-AskMainMenu Was gibt es in der mensa {ThisDate} zu essen
-AskMainMenu Was gibt es {ThisDate} zu essen in der mensa
-AskMainMenu was ist das tagesmenü {ThisDate}
-AskMainMenu was gibt es zu essen
-AskMainMenu was ist das tagesmenü
-AskMainMenu was gibt es in der mensa
-AskMainMenu was gibt es als hauptgericht
-AskMainMenu was ist das hauptgericht
+ï»¿AskMenu was gibt es zu essen
+AskMenu was gibt es in der mensa
+AskMenu ich hab hunger
+AskMenu ich habe hunger
+AskMenu was gibt es
+AskMenu was gibt es {ThisDate} zu essen
+AskMenu was gibt es zu essen {ThisDate}
+AskMenu {ThisDate} was gibt es zu essen
+AskMenu was gibt es {ThisDate} in der mensa
+AskMenu was gibt es in der mensa {ThisDate}
+AskMenu {ThisDate} was gibt es in der mensa
+AskMenu was gibt es {ThisDate}
+AskMenu sag mir das {Menu}
+AskMenu was gibt es {Menu} zu essen
+AskMenu was gibt es zu essen {Menu}
+AskMenu {Menu} was gibt es zu essen
+AskMenu was gibt es in der mensa {Menu}
+AskMenu ich hab hunger nach {Menu}
+AskMenu ich habe hunger nach {Menu}
+AskMenu was gibt es {Menu}
+AskMenu was gibt es {Menu} {ThisDate} zu essen
+AskMenu was gibt es {Menu} zu essen {ThisDate}
+AskMenu {ThisDate} was gibt es {Menu} zu essen
+AskMenu was gibt es {Menu} {ThisDate} in der mensa
+AskMenu was gibt es {ThisDate} in der mensa {Menu} 
+AskMenu was gibt es in der mensa {Menu} {ThisDate}
+AskMenu {ThisDate} was gibt es in der mensa {Menu} 
+AskMenu was gibt es {ThisDate} {Menu} 
 
-AskVegMenu Was gibt es {ThisDate} vegetarisch zu essen
-AskVegMenu Was gibt es in der mensa {ThisDate} zu essen ohne fleisch
-AskVegMenu was ist das vegetarische menü {ThisDate}
-AskVegMenu was gibt es zu essen ohne fleisch
-AskVegMenu was gibt es ohne fleisch
-AskVegMenu gibt es etwas ohne fleisch
-AskVegMenu was ist das vegetarische menü
-AskVegMenu was gibt vegetarisches es in der mensa
 
 AskSideDishes Welche Beilagen gibt es
+AskSideDishes Welche Beilagen gibt es dazu
+AskSideDishes Und die Beilagen
+AskSideDishes Und die Beilagen dazu
 AskSideDishes Was gibt es dazu
+AskSideDishes Gibt es dazu irgendwas
+AskSideDishes gibt es dazu irgend etwas
 
 AskPrice Was kostet es
 AskPrice Wieviel kostet das
- 
+AskPrice sag mir den Preis
+AskPrice was ist der preis
+
 AskBusinessHours Wann hat sie auf
 AskBusinessHours Wann macht die Mensa zu
-AskBusinessHours Was sind die Öffnungszeiten 
+AskBusinessHours Was sind die Ã–ffnungszeiten 
 
 ChangeDate Und am {Date}
