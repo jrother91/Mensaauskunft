@@ -66,12 +66,14 @@ def extractInfo(divElem):
     beilagen = []
     menuveg = []
     beilagenveg = []
+    menu_vit = []
     for i in range(5):
         menus = mensaPlan[i].find_all('tbody')[0]
         menu.append(menus.find_all('tr', class_='odd')[0].find_all('p')[1])
         beilagen.append(menus.find_all('tr', class_='odd')[0].find_all('p')[3])
         menuveg.append(menus.find_all('tr', class_='even')[0].find_all('p')[1])
         beilagenveg.append(menus.find_all('tr', class_='even')[0].find_all('p')[3])
+        menu_vit.append(menus.find_all('tr', class_='odd')[1].find_all('p')[1])
 
     #Dictionary mit den Tagen als key und die Menüs als Value
     food = dict()
@@ -83,10 +85,12 @@ def extractInfo(divElem):
         mveg = str(menuveg[i])
         b = str(beilagen[i])
         bveg = str(beilagenveg[i])
+        mvit = str(menu_vit[i])
         m = bs4.BeautifulSoup(m, 'lxml')
         mveg = bs4.BeautifulSoup(mveg, 'lxml')
         b = bs4.BeautifulSoup(b, 'lxml')
         bveg = bs4.BeautifulSoup(bveg, 'lxml')
+        mvit = bs4.BeautifulSoup(mvit, 'lxml')
         for tag in m.find_all('sup'):
             tag.decompose()
         for tag in mveg.find_all('sup'):
@@ -95,11 +99,14 @@ def extractInfo(divElem):
             tag.decompose()
         for tag in bveg.find_all('sup'):
             tag.decompose()
+        for tag in mvit.find_all('sup'):
+            tag.decompose()
         food[dates[i]]['main_menu'] = m.find('p').getText()
         food[dates[i]]['veg_menu'] = mveg.find('p').getText()
         beilage = b.find('p').getText().replace(' oder', ',').split(',')
         beilage_veg = bveg.find('p').getText().replace(' oder', ',').split(',')
-        food[dates[i]]['side_dishes'] = list(set(beilage + beilage_veg))        
+        food[dates[i]]['side_dishes'] = list(set(beilage + beilage_veg))
+        food[dates[i]]['mensa_vit'] = mvit.find('p').getText()
 
     return(food)
 
