@@ -9,19 +9,14 @@
 	  {
 	  "name": "ThisDate",
 	  "type": "AMAZON.DATE"
+	  },
+	  {
+	  "name": "Menu",
+	  "type": "MENUS"
 	  }
      ]
     },
 	{
-      "intent": "AskVegMenu",
-	  "slots": [
-	  {
-	  "name": "ThisDate",
-	  "type": "AMAZON.DATE"
-	  }
-     ]
-    },
-    {
       "intent": "AskSideDishes"
     },
 	{
@@ -29,15 +24,6 @@
     },
 	{
       "intent": "AskBusinessHours"
-    },
-	{
-      "intent": "ChangeDate",
-	  "slots": [
-        {
-          "name": "Date",
-          "type": "AMAZON.DATE"
-        }
-      ]
     },
     {
       "intent": "AMAZON.HelpIntent"
@@ -50,3 +36,12 @@
     }
   ]
 }
+
+MENUS
+tagesmenü
+hauptgericht
+mit fleisch
+ohne fleisch
+vegetarisch
+vital
+leichtes
