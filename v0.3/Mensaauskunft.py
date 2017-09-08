@@ -73,7 +73,7 @@ def veg_menu(ThisDate):
 	
     print "the date is" + ThisDate
     
-    veg_menu = render_template('veg_menu', veg_menu = mensapagescraper.getMensaInfo()["2017-09-14"]["veg_menu"])
+    veg_menu = render_template('veg_menu', veg_menu = mensapagescraper.getMensaInfo()[ThisDate]['veg_menu'])
 	
     print "our info is "+mensapagescraper.getMensaInfo()[ThisDate]
     
@@ -86,6 +86,27 @@ def veg_menu(ThisDate):
     
     return question(veg_menu_msg)
 
+@ask.intent("AskMensaVital", default={"ThisDate" : date.today().isoformat()}, convert={"ThisDate":datetime.date})
+
+def mensa_vital(ThisDate):
+    """
+    Greets the user if they haven't been greetet yet.
+    Takes a given date (or assumes today's date) and gives back the main menu.
+    """
+
+    
+    mensa_vital = render_template('mensa_vital', mensa_vital = mensapagescraper.getMensaInfo()[ThisDate]["mensa_vit"])
+
+    
+    
+    if "greet" not in session.attributes.keys():
+        welcome_msg = render_template('welcome')
+        session.attributes["greet"] = True
+        mensa_vital_msg = welcome_msg + " " + mensa_vital
+    else:
+        mensa_vital_msg = mensa_vital
+    
+    return question(mensa_vital_msg)
 
 @ask.intent("Done")
 

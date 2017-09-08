@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import requests, bs4, codecs, json
-
+import codecs
 import os
 import glob
 
@@ -81,11 +81,11 @@ def extractInfo(divElem):
     #Dictionary of Dictionaries (key: Datum -> key: Tagesmenü -> value: Gericht Tagesmenü | key: Datum -> key: vegMenü -> value: Gericht vegetarisches Menü)
     for i in range(5):
         food[dates[i]] = {}
-        m = str(menu[i])
-        mveg = str(menuveg[i])
-        b = str(beilagen[i])
-        bveg = str(beilagenveg[i])
-        mvit = str(menu_vit[i])
+        m = menu[i].encode('utf-8')
+        mveg = menuveg[i].encode('utf-8')
+        b = beilagen[i].encode('utf-8')
+        bveg = beilagenveg[i].encode('utf-8')
+        mvit = menu_vit[i].encode('utf-8')
         m = bs4.BeautifulSoup(m, 'lxml')
         mveg = bs4.BeautifulSoup(mveg, 'lxml')
         b = bs4.BeautifulSoup(b, 'lxml')
@@ -114,14 +114,14 @@ def saveToJson(date, food):
     """
     saves the food dictionary as a json file
     """
-    with open(date + '.json', 'w') as fp:
+    with codecs.open(date + '.json', 'w', 'utf-8') as fp:
         json.dump(food, fp, sort_keys = True)
 
 def loadFromJson(date):
     """
     loads the food dictionary from a json file
     """
-    with open(date + '.json', 'r') as fp:
+    with codecs.open(date + '.json', 'r', 'utf-8') as fp:
         food = json.load(fp)
 
     return food
@@ -182,6 +182,6 @@ def getMensaInfo():
     
 
 if __name__ == '__main__':
-    
+    #print(type(getMensaInfo()['2017-09-14']['veg_menu']))
     print(getMensaInfo())
     
